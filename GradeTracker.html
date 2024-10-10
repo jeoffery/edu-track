@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grade Tracker</title>
+    <style>
+        body {
+            background-image: url('https://plus.unsplash.com/premium_photo-1671156854811-92d6bff8209b?q=80&w=1400&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Specify the path to your background image */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent background image from repeating */
+            background-position: center; /* Center the background image */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            height: 100vh; /* Set body height to 100% of viewport height */
+            /* You can also customize other background properties such as background-color, background-position, etc. */
+        }
+        
+        /* Add additional CSS styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Grade Tracker</h1>
+    
+    <form id="gradeForm">
+        <label for="student">Student:</label>
+        <select id="student" name="student" required>
+            <option value="student1">Student 1</option>
+            <option value="student2">Student 2</option>
+            <option value="student3">Student 3</option>
+            <!-- Add more options as needed -->
+        </select><br><br><br><br>
+        
+        <label for="course">Course:</label>
+        <select id="course" name="course" required>
+            <option value="Math">Math</option>
+            <option value="Science">Science</option>
+            <option value="English">English</option>
+            <option value="Social studies">Social studies</option>
+            <option value="ICT">ICT</option>
+            <!-- Add more options as needed -->
+        </select><br><br><br><br>
+        
+        <label for="grade">Grade:</label>
+        <input type="number" id="grade" name="grade" min="0" max="100" required><br><br><br><br>
+        
+        <button type="button" onclick="recordGrade()">Record Grade</button>
+    </form>
+    
+    <script>
+        function recordGrade() {
+            // Retrieve form data
+            var student = document.getElementById("student").value;
+            var course = document.getElementById("course").value;
+            var grade = document.getElementById("grade").value;
+            
+            // Handle grade data (e.g., store in a database)
+            console.log("Student: " + student);
+            console.log("Course: " + course);
+            console.log("Grade: " + grade);
+            
+            // Clear form inputs
+            document.getElementById("gradeForm").reset();
+        }
+    </script>
+</body>
+</html>

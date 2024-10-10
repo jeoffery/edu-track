@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System - Search & Filter</title>
+    <style>
+        body {
+            background-image: url('https://plus.unsplash.com/premium_photo-1668473366519-ac76b1e8e8d3?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Specify the path to your background image */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent background image from repeating */
+            background-position: center; /* Center the background image */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            height: 100vh; /* Set body height to 100% of viewport height */
+            /* You can also customize other background properties such as background-color, background-position, etc. */
+        }
+        
+        /* Add additional CSS styles as needed */
+    </style>
+</head>
+<body>
+    <h1> Search & Filter</h1>
+    
+    <label for="search">Search:</label>
+    <input type="text" id="search" onkeyup="filterStudents()" placeholder="Enter student name...">
+    
+    <table id="studentTable">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Student ID</th>
+                <th>Email</th>
+                <th>Course</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Student records will be dynamically added here -->
+            <tr>
+                <td>John Doe</td>
+                <td>12345</td>
+                <td>john.doe@example.com</td>
+                <td>Math</td>
+            </tr>
+            <!-- Add more student records as needed -->
+        </tbody>
+    </table>
+    
+    <script>
+        function filterStudents() {
+            var input, filter, table, tr, td, i, txtValue;
+            input = document.getElementById("search");
+            filter = input.value.toUpperCase();
+            table = document.getElementById("studentTable");
+            tr = table.getElementsByTagName("tr");
+
+            // Loop through all table rows, and hide those that don't match the search query
+            for (i = 0; i < tr.length; i++) {
+                td = tr[i].getElementsByTagName("td")[0]; // Assuming the name is in the first column
+                if (td) {
+                    txtValue = td.textContent || td.innerText;
+                    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none";
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

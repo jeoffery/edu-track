@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Tracker</title>
+    <style>
+        body {
+            background-image: url('https://images.unsplash.com/photo-1487700160041-babef9c3cb55?q=80&w=1452&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'); /* Specify the path to your background image */
+            background-size: cover; /* Cover the entire background */
+            background-repeat: no-repeat; /* Prevent background image from repeating */
+            background-position: center; /* Center the background image */
+            margin: 0; /* Remove default body margin */
+            padding: 0; /* Remove default body padding */
+            height: 100vh; /* Set body height to 100% of viewport height */
+            /* You can also customize other background properties such as background-color, background-position, etc. */
+        }
+        
+        /* Add additional CSS styles as needed */
+    </style>
+</head>
+<body>
+    <h1>Attendance Tracker</h1>
+    
+    <form id="attendanceForm">
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required><br><br><br><br>
+        
+        <label for="course">Course:</label>
+        <select id="course" name="course" required>
+            <option value="Math">Math</option>
+            <option value="Science">Science</option>
+            <option value="English">English</option>
+            <option value="Social studies">Social studies</option>
+            <option value="ICT">ICT</option>
+            <!-- Add more options as needed -->
+        </select><br><br>
+        
+        <label for="students">Students:</label><br><br><br>
+        <input type="checkbox" id="student1" name="student1">
+        <label for="student1">Student 1</label><br><br><br>
+        
+        <input type="checkbox" id="student2" name="student2">
+        <label for="student2">Student 2</label><br><br><br>
+        
+        <!-- Add more checkboxes for additional students -->
+        
+        <br><br>
+        <button type="button" onclick="markAttendance()">Mark Attendance</button>
+    </form>
+    
+    <script>
+        function markAttendance() {
+            // Retrieve form data
+            var date = document.getElementById("date").value;
+            var course = document.getElementById("course").value;
+            
+            // Get selected students
+            var selectedStudents = [];
+            var checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+            checkboxes.forEach(function(checkbox) {
+                selectedStudents.push(checkbox.id);
+            });
+            
+            // Handle attendance data (e.g., store in a database)
+            console.log("Date: " + date);
+            console.log("Course: " + course);
+            console.log("Selected Students: " + selectedStudents);
+            
+            // Clear form inputs
+            document.getElementById("date").value = "";
+            document.getElementById("course").value = "Math"; // Reset course to default value
+            checkboxes.forEach(function(checkbox) {
+                checkbox.checked = false;
+            });
+        }
+    </script>
+</body>
+</html>
